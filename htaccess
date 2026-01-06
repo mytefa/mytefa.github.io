@@ -1,0 +1,33 @@
+RewriteEngine On
+RewriteBase /
+
+# ----------------------------------------------------------------------
+# 1. ABAIKAN FILE FISIK DAN FOLDER UTAMA
+# ----------------------------------------------------------------------
+# Jika file atau folder secara fisik ada (seperti upload.php, icon, sw.js), tampilkan langsung
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ----------------------------------------------------------------------
+# 2. ATURAN KHUSUS UNTUK APLIKASI FLUTTER (SUB-FOLDER)
+# ----------------------------------------------------------------------
+# Aplikasi: My Teaching Factory
+# Jika user mengakses /teaching-factory/ dan halamannya tidak ditemukan (karena routing flutter),
+# Lempar request tersebut ke index.html di dalam folder aplikasinya.
+RewriteCond %{REQUEST_URI} ^/teaching-factory/ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^teaching-factory/(.*)$ /teaching-factory/index.html [L]
+
+# --- Tambahkan aturan untuk aplikasi lain di sini jika ada di masa depan ---
+# RewriteCond %{REQUEST_URI} ^/nama-app-baru/ [NC]
+# RewriteRule ^nama-app-baru/(.*)$ /nama-app-baru/index.html [L]
+
+# ----------------------------------------------------------------------
+# 3. FALLBACK UNTUK LANDING PAGE UTAMA
+# ----------------------------------------------------------------------
+# Jika semua aturan di atas tidak terpenuhi, arahkan ke index.html utama
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
