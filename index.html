@@ -16,45 +16,93 @@
     
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .app-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .app-card:hover { transform: translateY(-8px); }
+        /* Hide scrollbar for horizontal scroll */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
 
-    <div class="max-w-4xl mx-auto px-6 py-12">
-        <header class="text-center mb-16">
-            <h1 class="text-4xl font-bold text-slate-800 mb-2">Pusat Aplikasi Digital</h1>
-            <p class="text-slate-500 text-lg text-balance">Selamat datang di portal layanan sekolah terpadu</p>
-        </header>
+    <!-- Play Store Header Style -->
+    <div class="bg-white shadow-sm sticky top-0 z-20">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
+            <div class="flex-1 bg-slate-100 rounded-lg px-4 py-2.5 flex items-center text-slate-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span class="text-sm font-medium">Telusuri aplikasi & game</span>
+            </div>
+            <div class="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-sm">
+                T
+            </div>
+        </div>
+        <!-- Navigation Tabs -->
+        <div class="max-w-4xl mx-auto px-4 flex gap-6 text-sm font-medium text-slate-500 overflow-x-auto no-scrollbar border-b border-slate-100">
+            <div class="py-3 text-green-700 border-b-2 border-green-700 whitespace-nowrap px-2">Untuk Anda</div>
+            <div class="py-3 whitespace-nowrap px-2">Paling Populer</div>
+            <div class="py-3 whitespace-nowrap px-2">Kategori</div>
+            <div class="py-3 whitespace-nowrap px-2">Pilihan Editor</div>
+        </div>
+    </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+    <div class="max-w-4xl mx-auto px-4 py-6">
+        
+        <!-- Section Title -->
+        <div class="flex items-center justify-between mb-6 px-2">
+            <h2 class="text-lg font-bold text-slate-800">Aplikasi Sekolah</h2>
+            <span class="text-green-700 text-xl">➔</span>
+        </div>
+
+        <!-- App Grid (Launcher) -->
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:gap-8 px-2">
             
             <!-- Teaching Factory (langsung pindah ke tab yang sama) -->
-            <a href="http://103.172.20.26/teaching-factory" class="app-card group flex flex-col items-center">
-                <div class="w-24 h-24 md:w-32 md:h-32 bg-blue-500 rounded-[2.5rem] shadow-xl shadow-blue-200 flex items-center justify-center mb-4 group-hover:bg-orange-600 transition-colors">
-                    <span class="text-4xl md:text-5xl">🏭</span>
+            <a href="http://103.172.20.26/teaching-factory" class="group flex flex-col items-center gap-2">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-blue-500 rounded-2xl shadow-md flex items-center justify-center text-4xl shadow-blue-200 group-hover:scale-105 transition-transform">
+                    🏭
                 </div>
-                <span class="text-center font-bold text-slate-700 text-sm md:text-base">My Teaching Factory</span>
+                <div class="text-center w-full">
+                    <div class="text-xs md:text-sm font-semibold text-slate-700 truncate">My Teaching Factory</div>
+                    <div class="text-[10px] text-slate-500 mt-0.5">Produktivitas • 4.8 ★</div>
+                </div>
             </a>
 
-            <div class="app-card flex flex-col items-center opacity-40 grayscale">
-                <div class="w-24 h-24 md:w-32 md:h-32 bg-blue-500 rounded-[2.5rem] shadow-lg flex items-center justify-center mb-4">
-                    <span class="text-4xl md:text-5xl">📝</span>
+            <!-- SiMasjid -->
+            <a href="#" class="group flex flex-col items-center gap-2">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-emerald-500 rounded-2xl shadow-md flex items-center justify-center text-4xl shadow-emerald-200 group-hover:scale-105 transition-transform">
+                    🕌
                 </div>
-                <span class="text-center font-bold text-slate-700 text-sm md:text-base italic">IOT Builder</span>
-            </div>
+                <div class="text-center w-full">
+                    <div class="text-xs md:text-sm font-semibold text-slate-700 truncate">SiMasjid</div>
+                    <div class="text-[10px] text-slate-500 mt-0.5">Religi • 4.5 ★</div>
+                </div>
+            </a>
 
-            <div class="app-card flex flex-col items-center opacity-40 grayscale">
-                <div class="w-24 h-24 md:w-32 md:h-32 bg-emerald-500 rounded-[2.5rem] shadow-lg flex items-center justify-center mb-4">
-                    <span class="text-4xl md:text-5xl">📚</span>
+            <!-- TeknoMan -->
+            <a href="#" class="group flex flex-col items-center gap-2">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-orange-500 rounded-2xl shadow-md flex items-center justify-center text-4xl shadow-orange-200 group-hover:scale-105 transition-transform">
+                    🛠️
                 </div>
-                <span class="text-center font-bold text-slate-700 text-sm md:text-base italic">Network Simulator</span>
-            </div>
+                <div class="text-center w-full">
+                    <div class="text-xs md:text-sm font-semibold text-slate-700 truncate">TeknoMan</div>
+                    <div class="text-[10px] text-slate-500 mt-0.5">Tools • 4.2 ★</div>
+                </div>
+            </a>
+
+            <!-- TeknoPos -->
+            <a href="#" class="group flex flex-col items-center gap-2">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-purple-500 rounded-2xl shadow-md flex items-center justify-center text-4xl shadow-purple-200 group-hover:scale-105 transition-transform">
+                    📠
+                </div>
+                <div class="text-center w-full">
+                    <div class="text-xs md:text-sm font-semibold text-slate-700 truncate">TeknoPos</div>
+                    <div class="text-[10px] text-slate-500 mt-0.5">Bisnis • 4.7 ★</div>
+                </div>
+            </a>
 
         </div>
 
-        <footer class="mt-32 pt-8 border-t border-slate-200 text-center">
+        <footer class="mt-20 pt-8 border-t border-slate-200 text-center">
             <div class="inline-flex items-center px-4 py-2 bg-white rounded-full border border-slate-200 shadow-sm mb-6">
                 <span class="relative flex h-3 w-3 mr-3">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
